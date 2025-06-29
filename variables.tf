@@ -36,11 +36,6 @@ variable "single_nat_gateway" {
   default     = true
 }
 
-variable "ram_principals" {
-  description = "List of AWS Account IDs allowed to access the shared Transit Gateway via AWS RAM"
-  type        = list(string)
-}
-
 variable "tags" {
   description = "Map of custom tags to apply to all resources"
   type        = map(string)
@@ -52,6 +47,7 @@ variable "vpc_attachments" {
   type = map(object({
     cidr            = string
     route_table_ids = list(string)
+    account_id      = string
   }))
 }
 

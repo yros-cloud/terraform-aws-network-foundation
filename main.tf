@@ -59,6 +59,14 @@ locals {
   }
 }
 
+# 📡 Unique RAM principals from VPC attachments
+locals {
+  ram_principals = distinct([
+    for vpc in values(var.vpc_attachments) : vpc.account_id
+  ])
+}
+
+
 # 🌐 Transit Gateway module
 module "tgw" {
   source  = "terraform-aws-modules/transit-gateway/aws"
@@ -69,7 +77,7 @@ module "tgw" {
 
   enable_auto_accept_shared_attachments = true
   ram_allow_external_principals         = true
-  ram_principals                        = var.ram_principals
+  ram_principals                        = local.ram_principals
 
   tags = merge({ "Name" = "${var.project}-tgw-${var.environment}" }, local.tags)
 }

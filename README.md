@@ -37,10 +37,6 @@ module "network_foundation" {
   subnet_newbits               = 3                 # Creates 8 subnets of /24 (256 IPs each)
   single_nat_gateway        = false
 
-  ram_principals = [
-    "111122223333",
-    "222233334444"
-  ]
 
   vpc_attachments = {
     development = {
@@ -83,8 +79,7 @@ module "network_foundation" {
 | `vpc_transit_public_base_cidr` | `string`       | Base CIDR to split public subnets                         | n/a     | ✅        |
 | `subnet_newbits`               | `number`       | Number of bits to add when creating subnets               | `4`     | ❌        |
 | `single_nat_gateway`           | `bool`         | Use single NAT Gateway across all AZs                     | `true`  | ❌        |
-| `ram_principals`               | `list(string)` | AWS Account IDs allowed to use TGW via RAM                | `[]`    | ✅        |
-| `vpc_attachments`              | `map(object)`  | Map of VPCs to attach with their CIDR and route table IDs | n/a     | ✅        |
+| `vpc_attachments`              | `map(object)`  | Map of Account ID, VPCs to attach with their CIDR and route table IDs | n/a     | ✅        |
 | `tgw_routes_allow`             | `list(object)` | List of allowed routes between spokes                     | `[]`    | ❌        |
 | `enable_vpc_flow_logs`         | `bool`         | Enable VPC Flow Logs                                      | `false` | ❌        |
 | `vpc_flow_logs_bucket_name`    | `string`       | Optional bucket name for VPC flow logs                    | `""`    | ❌        |

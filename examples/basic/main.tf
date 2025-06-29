@@ -17,11 +17,6 @@ module "network_foundation" {
 
   single_nat_gateway = true
 
-  ram_principals = [
-    "111122223333",
-    "222233334444"
-  ]
-
   vpc_attachments = {
     development = {
       cidr            = "10.120.0.0/16"
