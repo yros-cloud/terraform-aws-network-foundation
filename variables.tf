@@ -36,22 +36,6 @@ variable "single_nat_gateway" {
   default     = true
 }
 
-variable "enable_transit" {
-  description = "Enable creation of the Transit VPC and related resources"
-  type        = bool
-  default     = true
-}
-
-variable "foundation_vpc_id" {
-  description = "ID of the Foundation (Hub) VPC"
-  type        = string
-}
-
-variable "foundation_private_subnets" {
-  description = "List of private subnet IDs in the Foundation VPC"
-  type        = list(string)
-}
-
 variable "ram_principals" {
   description = "List of AWS Account IDs allowed to access the shared Transit Gateway via AWS RAM"
   type        = list(string)

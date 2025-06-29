@@ -36,14 +36,6 @@ module "network_foundation" {
   vpc_transit_public_base_cidr = "10.112.0.0/21"   # 2,048 IPs (base block for 8 x /24 subnets)
   subnet_newbits               = 3                 # Creates 8 subnets of /24 (256 IPs each)
   single_nat_gateway        = false
-  enable_transit            = true
-
-  foundation_vpc_id = "vpc-0123456789abcdef0"
-  foundation_private_subnets = [
-    "subnet-aaaaaaa1",
-    "subnet-aaaaaaa2",
-    "subnet-aaaaaaa3"
-  ]
 
   ram_principals = [
     "111122223333",
@@ -91,9 +83,6 @@ module "network_foundation" {
 | `vpc_transit_public_base_cidr` | `string`       | Base CIDR to split public subnets                         | n/a     | ✅        |
 | `subnet_newbits`               | `number`       | Number of bits to add when creating subnets               | `4`     | ❌        |
 | `single_nat_gateway`           | `bool`         | Use single NAT Gateway across all AZs                     | `true`  | ❌        |
-| `enable_transit`               | `bool`         | Enable Transit VPC provisioning                           | `true`  | ❌        |
-| `foundation_vpc_id`            | `string`       | Existing Foundation VPC ID                                | n/a     | ✅        |
-| `foundation_private_subnets`   | `list(string)` | List of private subnets in the Foundation VPC             | n/a     | ✅        |
 | `ram_principals`               | `list(string)` | AWS Account IDs allowed to use TGW via RAM                | `[]`    | ✅        |
 | `vpc_attachments`              | `map(object)`  | Map of VPCs to attach with their CIDR and route table IDs | n/a     | ✅        |
 | `tgw_routes_allow`             | `list(object)` | List of allowed routes between spokes                     | `[]`    | ❌        |
