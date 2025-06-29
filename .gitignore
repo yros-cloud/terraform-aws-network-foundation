@@ -1,0 +1,25 @@
+# Terraform state
+*.tfstate
+*.tfstate.backup
+.terraform/
+
+# Crash logs
+crash.log
+
+# Terraform variable overrides
+*.tfvars
+*.tfvars.json
+terraform.tfvars
+
+# CLI local files
+.terraform.lock.hcl
+.terraform.tfstate.lock.info
+
+# Editor / OS files
+*.swp
+*.swo
+*.DS_Store
+.idea/
+.vscode/
+*.bak
+*.tmp
