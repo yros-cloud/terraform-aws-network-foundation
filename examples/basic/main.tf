@@ -11,9 +11,9 @@ module "network_foundation" {
   region      = "us-east-1"
 
   az_count                    = 3
-  vpc_transit_cidr            = "10.113.0.0/16"      # 65,536 IPs
-  vpc_transit_public_base_cidr = "10.113.144.0/20"   # 1,024 IPs for public subnets
-  subnet_newbits              = 3                   # Generates 8 subnets (/24)
+  vpc_transit_cidr             = "10.112.0.0/16"   # 65,536 IPs total for Transit VPC
+  vpc_transit_public_base_cidr = "10.112.240.0/21"   # 2,048 IPs (base block for 8 x /24 subnets)
+  subnet_newbits               = 3                 # Creates 8 subnets of /24 (256 IPs each)
 
   single_nat_gateway = true
 
